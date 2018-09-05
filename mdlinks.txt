@@ -1,0 +1,49 @@
+https://youtu.be/w-7RQ46RgxU
+https://youtu.be/rTsz09zRuTU
+https://youtu.be/TlB_eWDSMt4
+https://www.youtube.com/watch?v=xHLd36QoS4k
+https://www.youtube.com/watch?v=6jsAk-DDj2c
+https://www.youtube.com/watch?v=BhvLIzVL8_o
+https://www.youtube.com/watch?v=1SvugIU1l0w&amp;index=10
+https://www.youtube.com/watch?v=2Ntnlv-nuV8
+
+
+FLUJO DEL proyecto
+
+
+
+
+yo como desarrolladora quiero instalar una libreria que me permita 
+verificar los estados de mis links en mis archivos .md
+
+yo como desarrolladora quiero crear una libreria.
+yo como desarrolladora quiero que node.js se entere de q le estoy .
+pasando una carpeta/ruta de carpeta.
+yo como desarrolladora quiero transformar todas las rutas relativas 
+a absolutas para q node las reconozca.
+yo como desarrolladora quiero ver todos los archivos de una carpeta
+yo como desarrolladora quiero identificar todos los .md
+yo com desarrolladora quiero listar todos los links del archi .md
+
+
+yo como desarrolladora quiero listar los links de mi
+archivo .md pasando el comando md-links <ruta/archhivo>
+uno obj x cada link
+[{href:ksdhfkwhefk, text:ksdjfhkjsa, file:ruta}]
+
+yo como desarrolladora quiero saber el numero de links y cuales 
+son los links unicos pasando 
+el comando md-links <ruta/archivo> --stats
+total: numero
+unique: numero
+
+yo como desarrollaodra quiero saber el estado de los links 
+haciendo una consulta http con el 
+comando md-links <ruta/archivo> --validate
+un obj por link
+[{href:sldifjlas, text:leefa, file:kdhfshd, status:skdjd ok/fail}]
+
+yo como desarrolladora quiero ver cuantos links, su estado y si
+son unicos o no , con el comando 
+md-links <ruta//archivo> --stats --validate
+

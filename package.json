@@ -1,0 +1,33 @@
+{
+  "name": "lim20181-track-fe-markdown-list",
+  "version": "1.0.0",
+  "description": "libreria para identificar links rotos de archivos .md",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandraAAO/lim20181-Track-FE-markdown-list.git"
+  },
+  "keywords": [
+    "markdown",
+    "stadistics",
+    "links",
+    "count"
+  ],
+  "author": "la_poderosa_990@hotmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlejandraAAO/lim20181-Track-FE-markdown-list/issues"
+  },
+  "homepage": "https://github.com/AlejandraAAO/lim20181-Track-FE-markdown-list#readme",
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "bin": {
+    "md-links": "cli.js"
+  }
+}
