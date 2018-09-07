@@ -6,12 +6,15 @@ https://www.youtube.com/watch?v=6jsAk-DDj2c
 https://www.youtube.com/watch?v=BhvLIzVL8_o
 https://www.youtube.com/watch?v=1SvugIU1l0w&amp;index=10
 https://www.youtube.com/watch?v=2Ntnlv-nuV8
-
+https://coding.pstodulka.com/2014/10/22/node-modules-as-cli/
+http://justindavis.co/2014/11/24/using-command-line-arguments-in-a-node-script/
+https://www.smashingmagazine.com/2017/03/interactive-command-line-application-node-js/
+https://stackabuse.com/command-line-arguments-in-node-js/
+https://medium.com/@peraferrer/como-crear-un-m%C3%B3dulo-npm-6baef161a96
+https://pressroom.hostalia.com/wp-content/themes/hostalia_pressroom/images/wp-hostalia-enlaces-absolutos-y-relativos.pdf
+https://docs.google.com/presentation/d/1tOMh042qoyNRFBKeMaV-dxIrzfAJTXTKRWQ-cTcVaAw/edit#slide=id.g4157cfe52a_0_0
 
 FLUJO DEL proyecto
-
-
-
 
 yo como desarrolladora quiero instalar una libreria que me permita 
 verificar los estados de mis links en mis archivos .md
@@ -46,4 +49,5 @@ un obj por link
 yo como desarrolladora quiero ver cuantos links, su estado y si
 son unicos o no , con el comando 
 md-links <ruta//archivo> --stats --validate
+
 

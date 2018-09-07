@@ -1,4 +1,9 @@
 #!/usr/bin/env node
-const [,, ...args] = process.argv;
 
-console.log(`holi ${args}`);
+//const mdLinks = require("./md-links.js");
+
+//todos despues del segundo
+const [,, ...args] = process.argv;
+let ruta = args[0];
+
+console.log(`holiiii ${args}`);
