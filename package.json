@@ -1,5 +1,5 @@
 {
-  "name": "lim20181-track-fe-markdown-list",
+  "name": "alejandraao-mdlinks",
   "version": "1.0.0",
   "description": "libreria para identificar links rotos de archivos .md",
   "main": "index.js",
