@@ -29,5 +29,8 @@
   },
   "bin": {
     "md-links": "cli.js"
+  },
+  "dependencies": {
+    "node-fetch": "^2.2.0"
   }
 }
