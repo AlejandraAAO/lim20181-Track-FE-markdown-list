@@ -4,13 +4,13 @@ const fs = require("fs");
 const fetch = require("node-fetch");
 
 const mdLinks = (ruta)=>{
-  return new Promise((resolve, reject)=>{
+  return new Promise((resolve)=>{
     //console.log(ruta);
    resolve (reconocimiento(ruta))
   })
 }
 
-let fecheando = (arrayLinks)=>{
+const fecheando = (arrayLinks)=>{
  return new Promise((resolve)=>{
    
    let status = arrayLinks.map(arrayLink => {
@@ -48,8 +48,6 @@ const pullArch = (ruta)=>{
         //let result = fecheando(urlLink);
        resolve(cadalink);
         //const url = search.match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gm);
-        
-        
       });
     });
   }
@@ -66,7 +64,6 @@ const pullArch = (ruta)=>{
      }
   }
 
-m
 //exports.arch = pullArch;
 exports.read = mdLinks;
 
