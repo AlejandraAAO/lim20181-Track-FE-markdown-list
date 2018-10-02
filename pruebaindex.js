@@ -1,9 +1,7 @@
 const path = require("path");
 const fs = require("fs");
-//const fetch = require("node-fetch");
-
+const fetch = require("node-fetch");
 //primero funciones 
-
 //obteniendo el path si es file 
 
 const pathIs = (ruta)=>{
@@ -19,9 +17,7 @@ const pathIs = (ruta)=>{
     })  
   })    
 };
-
 //cuando sepa si es file, paso a verificar si es md
-
 const mdIs = (ruta) => {
   const ext = path.extname(ruta)
   if(ext === ".md"){
@@ -40,15 +36,12 @@ const readMd = (ruta) => {
   })
 };
 //con elarchivo md leido encontrar la coincidencia [abc](abc.com)
-
 const matchRxMd = (text) => {
   const search = text.match(/\[(.+)\]\((.+)\)/gm);
   //search es un array de valores []()
   return search;
-}
-
+};
 //con el array de elementos, creamos el objeto q se va a devolver
-
 const infoFile = (arrayElements, pathReturn) => {
   let arrayComplete = arrayElements.map(etiqueta => {
     let signo = etiqueta.indexOf("]");
@@ -64,36 +57,74 @@ const infoFile = (arrayElements, pathReturn) => {
   });
   return arrayComplete;
 };
-
+const dataLinks = (text) => {
+  const search = text.match(/((\w+:\/\/)[-a-zA-Z0-9:@;?&=\/%\+\.\*!'\(\),\$_\{\}\^~\[\]`#|]+)/gi)
+  return search;
+}
 //--validate: por cada link consultar su status
 //y meterlo dentro del objeto 
 
-const validateLinks = (links) => {
-  return fetch(links.href)
+const validateLinks = (url, textUrl, ruta) => {
+  return fetch(url)
   .then(data => {
-    links.status = data.status;
-    links.statusText = data.statusText;
-    return links;
+    let status = data.status;
+    let statusText = data.statusText;
+    console.log(ruta, url, status, statusText, textUrl);
   })
   .catch(e => {
-    links.status = err.code;
-    return links
+    let status = e.code;
+    let statusText = "fail";
+    console.log(ruta, url, status, statusText, textUrl);
   })
 }
 
 //--stats: va a contar los links y sacara los unicos y los rotos
+const stats = (arrayLinks) =>{
+    let total = arrayLinks.length;
+    let unique = Array.from(new Set(arrayLinks));
+    const obj = {
+      Total : total,
+      Unique: unique.length,
+    }
+    return obj; 
+}
+
+const validatestats = ()=>{};
 
 
-
-const mdLinks = (ruta) => {
+const mdLinks = (ruta, options) => {
   return new Promise((resolve)=>{
+    if (!options.validate && !options.stats){
     return pathIs(ruta)
     .then(result => mdIs(result))
     .then(result => readMd(result))
     .then(data => matchRxMd(data))
     .then(array => 
       resolve (infoFile(array, ruta)))
-     
-  })
+     //si validate
+  } else if (options.validate &&!options.stats) {
+    return pathIs(ruta)
+    .then(result => mdIs(result))
+    .then(result => readMd(result))
+    .then(data => matchRxMd(data))
+    .then(array => infoFile(array, ruta))
+    .then(data =>
+      data.forEach(elmt => {
+        const url = elmt.href;
+        const textUrl = elmt.text;
+        resolve (validateLinks(url, textUrl, ruta))
+      })
+         
+    )//si stats
+  } else if (!options.validate && options.stats){
+    return pathIs(ruta)
+    .then(result => mdIs(result))
+    .then(result => readMd(result))
+    .then(data => dataLinks(data))
+    .then(array => stats(array)) 
+    .then(response => console.log(response))
+      
+    }
+})
 };
 module.exports = mdLinks;
