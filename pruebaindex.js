@@ -10,7 +10,7 @@ const pathIs = (ruta)=>{
       if(e) return reject (e);
       if(data.isDirectory()){
         //deberia retornar un array de dir ofiles **recursion
-        return console.log("hola eres dir");
+        return console.log(" linea 13 hola eres dir");
       } else if(data.isFile()){    
         resolve (ruta);
       }
@@ -23,7 +23,7 @@ const mdIs = (ruta) => {
   if(ext === ".md"){
     return ruta
   } else {
-    console.log("Tu archivo no es Markdown :(");
+    console.log("linea 26 Tu archivo no es Markdown :(");
   }
 };
 //cuando sepa si es md, lo leo
@@ -64,19 +64,28 @@ const dataLinks = (text) => {
 //--validate: por cada link consultar su status
 //y meterlo dentro del objeto 
 
-const validateLinks = (url, textUrl, ruta) => {
-  return fetch(url)
-  .then(data => {
-    let status = data.status;
-    let statusText = data.statusText;
-    console.log(ruta, url, status, statusText, textUrl);
+const validateLink = ({text, href, file}) => {
+  return fetch(href)
+  .catch(()=>{
+    return ({
+      status:"404",
+      statusText: "Fail"
+    })
   })
-  .catch(e => {
-    let status = e.code;
-    let statusText = "fail";
-    console.log(ruta, url, status, statusText, textUrl);
+  .then(response => {
+     return({
+      href, text, file,
+      status:response.status,
+      value: response.statusText,})   
   })
 }
+const validateArrayObjects = arrayObjects =>{
+  return Promise.all(arrayObjects.map(
+    object => validateLink(object))
+  )};
+  
+  
+
 
 //--stats: va a contar los links y sacara los unicos y los rotos
 const stats = (arrayLinks) =>{
@@ -89,7 +98,18 @@ const stats = (arrayLinks) =>{
     return obj; 
 }
 
-const validatestats = ()=>{};
+const validateStats = (arrayLinks)=>{
+  let total =arrayLinks.length;
+  let unique = Array.from(new Set(arrayLinks));
+  let broken = arrayLinks.map(link => {
+    fetch(url)
+    .catch(e=>{
+
+    })
+  }
+
+  )
+};
 
 
 const mdLinks = (ruta, options) => {
@@ -108,13 +128,9 @@ const mdLinks = (ruta, options) => {
     .then(result => readMd(result))
     .then(data => matchRxMd(data))
     .then(array => infoFile(array, ruta))
-    .then(data =>
-      data.forEach(elmt => {
-        const url = elmt.href;
-        const textUrl = elmt.text;
-        resolve (validateLinks(url, textUrl, ruta))
-      })
-         
+    .then(data => 
+      resolve(validateArrayObjects(data))
+    
     )//si stats
   } else if (!options.validate && options.stats){
     return pathIs(ruta)
