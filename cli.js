@@ -8,23 +8,23 @@ const [ruta, ...stadistic] = args;
 
 //menejando las opciones
 const  options = {
-  validate : null,
-  stats: null,
+  validate : false,
+  stats: false,
 }
 //para cada opcion se asigna true como
 //valor en el obj options
 stadistic.forEach((value) => {
-  if(value === "--validate") {
+  if(value === "--v" || value === "--validate" ) {
     options.validate = true;
   } else 
-  if (value === "--stats"){
+  if (value === "--s" || value === "--stats"){
     options.stats = true;
   }
 })
 
 
 mdLinks(ruta, options)
-//name.then(name => console.log(name));
+// name.then(name => console.log(name));
   .then(name => console.log(name))
-  //.catch(error => console.log(error));
+  .catch(error => console.log(error));
 //console.log(`holiiii ${name}`);
