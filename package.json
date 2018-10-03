@@ -1,6 +1,6 @@
 {
   "name": "alejandraao-mdlinks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "libreria para identificar links rotos de archivos .md",
   "main": "index.js",
   "scripts": {
