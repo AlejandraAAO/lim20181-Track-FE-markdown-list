@@ -4,7 +4,7 @@
   "description": "libreria para identificar links rotos de archivos .md",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
